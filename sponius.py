@@ -23,7 +23,12 @@ def get_request(url):
 
 def lyrics(title, artist=""):
 
-    full_title = title + ' ' + artist
+    full_title = (title + ' ' + artist) \
+            .lower() \
+            .replace('by', '') \
+            .replace('acoustic', '') \
+            .replace('-', '') \
+            .strip()
     try:
         r = get_request(('https://genius.com/api/search/multi?q='
                 f'{full_title}'))
@@ -47,8 +52,14 @@ def lyrics(title, artist=""):
                     hit,
                     SequenceMatcher(
                         None,
-                        hit['result']['full_title'].lower().replace('by ', '').strip(),
-                        full_title.lower()).ratio()
+                        hit['result']['full_title']
+                            .lower()
+                            .replace('by', '')
+                            .replace('acoustic', '')
+                            .replace('-', '')
+                            .strip(),
+                        full_title
+                    ).ratio()
                 ) for hit in sections[0]['hits'] if hit['type'] == 'song'
             ]
         if len(hits) == 0:
