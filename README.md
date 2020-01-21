@@ -1,5 +1,5 @@
 # Sponus is a CLI lyrics service
-
+  SpoNus = Spotify + geNius
 
 # Sponus (What it is)
   Type `sponus` in terminal and instantly get the lyrics of what you're listening on spotify. boom!
