@@ -118,7 +118,7 @@ def get_spotify_song_info():
 
 
 title, artist = get_spotify_song_info()
-print(f'\n{artist} - {title}\n')
+print(f'\n{title} {artist}\n')
 
 l=lyrics(title, artist)
 print(l)
