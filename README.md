@@ -15,9 +15,9 @@
     * Arch `pacman -S base-devel`
   * MacOs:
     * You may see this link but I have no idea whether it successfully installs or not!
-    * https://devguide.python.org/setup/#macos-and-os-x
-    * Also maybe you could make it work by reinstalling python
-    * `brew uninstall python` and then `brew install python`
+      https://devguide.python.org/setup/#macos-and-os-x
+    * If that didn't work try reinstalling python
+      `brew uninstall python` and then `brew install python`
   
 3- Run install.sh
   * `./install.sh`
