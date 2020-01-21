@@ -42,24 +42,24 @@ def lyrics(title, artist=""):
         if len(sections) == 0:
             return 'Sorry! no lyrics found.'
 
-        hits = [hit for hit in sections[0]['hits'] if hit['type'] == 'song']
+        hits = [
+                (
+                    hit,
+                    SequenceMatcher(
+                        None,
+                        hit['result']['full_title'].lower().replace('by ', '').strip(),
+                        full_title.lower()).ratio()
+                ) for hit in sections[0]['hits'] if hit['type'] == 'song'
+            ]
         if len(hits) == 0:
             return 'Sorry! no lyrics found.'
-        hits.sort(
-                key=lambda hit:SequenceMatcher(None,
-                    hit['result']['full_title'].lower(),
-                    full_title.lower()).ratio(),
-                reverse=True)
+        hits.sort(key=lambda hit: hit[1], reverse=True)
 
         top_hit = hits[0]
-        top_ratio = SequenceMatcher(
-                None,
-                top_hit['result']['full_title'].lower(),
-                full_title.lower()).ratio()
-        if top_ratio < 0.7:
+        if top_hit[1] < 0.7:
             return 'Sorry! no lyrics found.'
 
-        song_url = top_hit['result']['url']
+        song_url = top_hit[0]['result']['url']
     except Exception as e:
         logging.debug(e)
         return 'Unexpected Json response!'
