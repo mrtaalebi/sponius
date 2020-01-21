@@ -1,13 +1,13 @@
-# Sponus is a CLI lyrics service
-  SpoNus = Spotify + geNius
+# Sponius is a CLI lyrics service
+  SpoNius = Spotify + geNius
 
-# Sponus (What it is)
-  Type `sponus` in terminal and instantly get the lyrics of what you're listening on spotify. boom!
+# Sponius (What it is)
+  Type `sponius` in terminal and instantly get the lyrics of what you're listening on spotify. boom!
 
 
 ## Installation
 1- clone the repository
-  * `git clone https://github.com/mrtaalebi/sponus && cd sponus`
+  * `git clone https://github.com/mrtaalebi/sponius && cd sponius`
 
 2- Run install.sh
   * `./install.sh`
@@ -19,6 +19,6 @@
   * Add option for cli lyrics search
 
 # Bugs and Reports
-  * Please inform me if you see any bugs or had any bad experience using `sponus`
+  * Please inform me if you see any bugs or had any bad experience using `sponius`
   * You could contact me via email: the.doors.are.locked@gmail.com or twitter DM @mrtaalebi
 
