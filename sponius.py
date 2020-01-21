@@ -45,8 +45,8 @@ def lyrics(title, artist=""):
         hits = [hit for hit in sections[0]['hits'] if hit['type'] == 'song']
         hits.sort(
                 key=lambda hit:SequenceMatcher(None,
-                    hit['result']['full_title'],
-                    full_title).ratio(),
+                    hit['result']['full_title'].lower(),
+                    full_title.lower()).ratio(),
                 reverse=True)
         if len(hits) == 0:
             return 'Sorry! no lyrics found.'
