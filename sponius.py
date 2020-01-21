@@ -56,7 +56,7 @@ def lyrics(title, artist=""):
         hits.sort(key=lambda hit: hit[1], reverse=True)
 
         top_hit = hits[0]
-        if top_hit[1] < 0.7:
+        if top_hit[1] < 0.5:
             return 'Sorry! no lyrics found.'
 
         song_url = top_hit[0]['result']['url']
