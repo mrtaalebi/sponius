@@ -8,8 +8,17 @@
 ## Installation
 1- clone the repository
   * `git clone https://github.com/mrtaalebi/sponius && cd sponius`
-
-2- Run install.sh
+2- You need python development headers to build some of the requirements
+  * Linux:
+    ** Ubuntu/Debian: `sudo apt update && sudo apt install build-essential python-dev`
+    ** Arch `pacman -S base-devel`
+  * MacOs:
+    ** You may see this link but I have no idea whether it successfully installs or not!
+    ** https://devguide.python.org/setup/#macos-and-os-x
+    ** Also maybe you could make it work by reinstalling python
+    ** `brew uninstall python` and then `brew install python`
+  
+3- Run install.sh
   * `./install.sh`
 
 # ToDo
