@@ -8,6 +8,7 @@
 ## Installation
 1- clone the repository
   * `git clone https://github.com/mrtaalebi/sponius && cd sponius`
+  
 2- You need python development headers to build some of the requirements
   * Linux:
     * Ubuntu/Debian: `sudo apt update && sudo apt install build-essential python-dev`
