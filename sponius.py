@@ -43,13 +43,13 @@ def lyrics(title, artist=""):
             return 'Sorry! no lyrics found.'
 
         hits = [hit for hit in sections[0]['hits'] if hit['type'] == 'song']
+        if len(hits) == 0:
+            return 'Sorry! no lyrics found.'
         hits.sort(
                 key=lambda hit:SequenceMatcher(None,
                     hit['result']['full_title'].lower(),
                     full_title.lower()).ratio(),
                 reverse=True)
-        if len(hits) == 0:
-            return 'Sorry! no lyrics found.'
 
         top_hit = hits[0]
         top_ratio = SequenceMatcher(
@@ -75,7 +75,7 @@ def lyrics(title, artist=""):
         return 'Sorry! HTML parser failed.'
 
     try:
-        return soup.find(class_='lyrics').get_text()
+        result = soup.find(class_='lyrics').get_text()
     except Exception as e:
         logging.debug(e)
         return 'Unexpected HTML response!'
