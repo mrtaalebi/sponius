@@ -1,23 +1,25 @@
-# Sponius is a CLI lyrics service
-  SpoNius = Spotify + geNius
-
 # Sponius (What it is)
-  Type `sponius` in terminal and instantly get the lyrics of what you're listening on spotify. boom!
+  * sponius is a CLI lyrics service which works with [spotify desktop app](https://www.spotify.com/us/download) and [genius.com](https://genius.com)
+  * SpoNius = Spotify + geNius
 
+# Sponius (How it works)
+  Type `sponius` in terminal and instantly get the lyrics of what you're listening on spotify. **BOOM!**
 
 ## Installation
 1- clone the repository
   * `git clone https://github.com/mrtaalebi/sponius && cd sponius`
   
-2- You need python development headers to build some of the requirements
+2- You need python development headers to build some of the requirements and few other packages
   * Linux:
-    * Ubuntu/Debian: `sudo apt update && sudo apt install build-essential python-dev`
-    * Arch `pacman -S base-devel`
+    * Ubuntu/Debian: `apt update && apt install build-essential python-dev dbus`
+    * Arch `pacman -S base-devel dbus`
   * MacOs:
-    * You may see this link but I have no idea whether it successfully installs or not!
-      https://devguide.python.org/setup/#macos-and-os-x
-    * If that didn't work try reinstalling python
-      `brew uninstall python` and then `brew install python`
+    * Install dbus with `brew install dbus`
+    * Install python development headers
+      * You may see this link but I have no idea whether it successfully installs or not!
+        https://devguide.python.org/setup/#macos-and-os-x
+      * If that didn't work try reinstalling python
+        `brew uninstall python` and then `brew install python`
   
 3- Run install.sh
   * `./install.sh`
