@@ -4,21 +4,21 @@
 sudo pip install -r requirements.txt
 
 echo ""
-echo "sponus is spotify + genius"
+echo "sponius is spotify + genius"
 echo ""
 
-sudo mkdir -p /etc/sponus/
-sudo cp sponus.py /etc/sponus/
+sudo mkdir -p /etc/sponius/
+sudo cp sponius.py /etc/sponius/
 
-sudo tee /usr/bin/sponus << EOF
+sudo tee /usr/local/bin/sponius << EOF
 #!/bin/bash
-python3 /etc/sponus/sponus.py
+python3 /etc/sponius/sponius.py
 EOF
-sudo chmod +x /usr/bin/sponus
+sudo chmod +x /usr/local/bin/sponius
 
 echo ""
-echo "successfully installed sponus"
-echo "just type \`sponus\` when listening to spotify"
+echo "successfully installed sponius"
+echo "just type \`sponius\` when listening to spotify"
 echo "enjoy!"
 echo ""
 
