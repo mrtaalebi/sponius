@@ -54,8 +54,8 @@ def lyrics(title, artist=""):
         top_hit = hits[0]
         top_ratio = SequenceMatcher(
                 None,
-                top_hit['result']['full_title'],
-                full_title).ratio()
+                top_hit['result']['full_title'].lower(),
+                full_title.lower()).ratio()
         if top_ratio < 0.7:
             return 'Sorry! no lyrics found.'
 
