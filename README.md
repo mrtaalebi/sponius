@@ -12,8 +12,8 @@
 2- You need python development headers to build some of the requirements and few other packages
   * Linux:
     * Ubuntu/Debian: `sudo apt update && sudo apt install build-essential python-dev dbus python3-pip virtualenv build-essential python3-dev libdbus-glib-1-dev libgirepository1.0-dev`
-    * Arch `pacman -S base-devel dbus python-pip virtualenv build-essential python3-dev libdbus-glib-1-dev libgirepository1.0-dev`
-  * MacOs:
+    * Arch `sudo pacman -Sy base-devel dbus python-pip python-virtualenv`
+  * macOs: **(Currently doesn't support macOS)**
     * Install dbus with `brew install dbus python3`
     * Install python development headers
       * You may see this link but I have no idea whether it successfully installs or not!
