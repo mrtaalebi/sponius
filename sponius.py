@@ -48,19 +48,21 @@ def lyrics(title, artist=""):
             return 'Sorry! no lyrics found.'
 
         hits = [
-                (
-                    hit,
-                    SequenceMatcher(
-                        None,
-                        hit['result']['full_title']
-                            .lower()
-                            .replace('by', '')
-                            .replace('acoustic', '')
-                            .replace('-', '')
-                            .strip(),
-                        full_title
-                    ).ratio()
-                ) for hit in sections[0]['hits'] if hit['type'] == 'song'
+                    (
+                        hit,
+                        SequenceMatcher(
+                            None,
+                            hit['result']['full_title']
+                                .lower()
+                                .replace('by', '')
+                                .replace('acoustic', '')
+                                .replace('-', '')
+                                .strip(),
+                            full_title
+                        ).ratio()
+                    )
+                for section in sections if 'hits' in section
+                for hit in section['hits'] if hit['type'] == 'song'
             ]
         if len(hits) == 0:
             return 'Sorry! no lyrics found.'
