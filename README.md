@@ -1,5 +1,5 @@
 # Sponius (What it is)
-  * sponius is a CLI lyrics service which works with [spotify desktop app](https://www.spotify.com/us/download) and [genius.com](https://genius.com)
+  * sponius is a CLI lyrics service which works with [Spotify desktop app](https://www.spotify.com/us/download) and [genius.com](https://genius.com)
   * SpoNius = Spotify + geNius
 
 # Sponius (How it works)
@@ -20,7 +20,7 @@
   * `./install.sh`
 
 # ToDo
-  * The lyric finding algorithm is very simple and can be improved
+  * The lyrics finding algorithm is very simple and can be improved
   * Logging and incident reporting
   * Lyrics can be printed in color
   * Add option for cli lyrics search
