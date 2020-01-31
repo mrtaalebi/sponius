@@ -3,7 +3,8 @@
   * SpoNius = Spotify + geNius
 
 # Sponius (How it works)
-  Type `sponius` in terminal and instantly get the lyrics of what you're listening on spotify. **BOOM!**
+  * Type `sponius` in terminal and instantly get the lyrics of what you're listening on spotify. **BOOM!**
+  * Type `sponius <song info>...` to search for a song's lyrics
 
 ## Installation
 1- clone the repository
@@ -20,10 +21,9 @@
   * `./install.sh`
 
 # ToDo
-  * The lyrics finding algorithm is very simple and can be improved
+  * The lyrics search algorithm is very simple and can be improved
   * Logging and incident reporting
   * Lyrics can be printed in color
-  * Add option for cli lyrics search
 
 # Bugs and Reports
   * Please inform me if you see any bugs or had any bad experience using `sponius`
