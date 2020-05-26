@@ -132,12 +132,17 @@ def parse_arguments(args):
     title = artist = None
     for opt, arg in opts:
         if opt in ('-h', '--help'):
-            print('help')
+            print('SpoNius = Spotify + geNius')
+            print('Sponius is a CLI lyrics service which works with Spotify desktop app and genius.com')
+            print('Type `sponius` in terminal and instantly get the lyrics of what you\'re listening on spotify. BOOM!')
+            print('Type `sponius -s <song title> -a <song artist>` to search for song\'s lyrics')
+            print('Or just Type `sponius <song tilte> by <artist>`')
             sys.exit()
         elif opt in ('-s', '--song'):
             title = arg
         elif opt in ('-a', '--artist'):
             artist = arg
+
     if title is None or artist is None:
         print('You Should give both song title and artist.')
         print('Use -a for artist and -s for song title.')
