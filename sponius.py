@@ -4,6 +4,7 @@ import requests
 import json
 import logging
 import dbus
+import sys, getopt
 
 from difflib import SequenceMatcher
 
@@ -119,7 +120,33 @@ def get_spotify_song_info():
     return title, artist
 
 
-title, artist = get_spotify_song_info()
+def parse_arguments(args):
+    try:
+        opts, args = getopt.getopt(args, 'ha:s:', ['song=', 'artist='])
+    except getopt.GetoptError as e:
+        print('Use sponius -h to find what you want')
+        sys.exit(2)
+    if not opts:
+        return get_spotify_song_info()
+
+    title = artist = None
+    for opt, arg in opts:
+        if opt in ('-h', '--help'):
+            print('help')
+            sys.exit()
+        elif opt in ('-s', '--song'):
+            title = arg
+        elif opt in ('-a', '--artist'):
+            artist = arg
+    if title is None or artist is None:
+        print('You Should give both song title and artist.')
+        print('Use -a for artist and -s for song title.')
+        print('See sponius -h for more.')
+        sys.exit(2)
+    return title, artist
+
+title, artist = parse_arguments(sys.argv[1:])
+
 print(f'\n{title} {artist}\n')
 
 l=lyrics(title, artist)
