@@ -126,7 +126,7 @@ def parse_arguments(args):
     except getopt.GetoptError as e:
         print('Use sponius -h to find what you want')
         sys.exit(2)
-    if not opts:
+    if not opts and not args:
         return get_spotify_song_info()
 
     title = artist = None
@@ -144,10 +144,21 @@ def parse_arguments(args):
             artist = arg
 
     if title is None or artist is None:
-        print('You Should give both song title and artist.')
-        print('Use -a for artist and -s for song title.')
-        print('See sponius -h for more.')
-        sys.exit(2)
+        if 'by' in args:
+            by_index = args.index('by')
+            if title is None:
+                try:
+                    title = args[by_index - 1]
+                except IndexError:
+                    print('You should give the songe name. Use `sponius -h` to see more')
+                    sys.exit(2)
+            if artist is None:
+                try:
+                    artist = args[by_index + 1]
+                except IndexError:
+                    print('You should give the songe artist. Use `sponius -h` to see more')
+                    sys.exit(2)
+
     return title, artist
 
 title, artist = parse_arguments(sys.argv[1:])
@@ -156,4 +167,3 @@ print(f'\n{title} {artist}\n')
 
 l=lyrics(title, artist)
 print(l)
-
