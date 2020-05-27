@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 import requests
 import json
 import logging
@@ -136,7 +137,8 @@ def parse_arguments(args):
             print('Sponius is a CLI lyrics service which works with Spotify desktop app and genius.com')
             print('Type `sponius` in terminal and instantly get the lyrics of what you\'re listening on spotify. BOOM!')
             print('Type `sponius -s <song title> -a <song artist>` to search for song\'s lyrics')
-            print('Or just Type `sponius <song tilte> by <artist>`')
+            print('Or just Type `sponius <song tilte> by <song artist>`')
+            print('If songe title or artist is more than one word, use " to surrounding them')
             sys.exit()
         elif opt in ('-s', '--song'):
             title = arg
@@ -160,6 +162,7 @@ def parse_arguments(args):
                     sys.exit(2)
 
     return title, artist
+
 
 title, artist = parse_arguments(sys.argv[1:])
 
