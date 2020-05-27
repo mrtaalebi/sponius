@@ -123,10 +123,11 @@ def get_spotify_song_info():
 
 def parse_arguments(args):
     try:
-        opts, args = getopt.getopt(args, 'ha:s:', ['song=', 'artist='])
-    except getopt.GetoptError as e:
+        opts, args = getopt.getopt(args, 'ha:s:', [])
+    except getopt.GetoptError:
         print('Use sponius -h to find what you want')
         sys.exit(2)
+
     if not opts and not args:
         return get_spotify_song_info()
 
