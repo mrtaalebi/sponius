@@ -4,7 +4,8 @@
 
 # Sponius (How it works)
   * Type `sponius` in terminal and instantly get the lyrics of what you're listening on spotify. **BOOM!**
-  * Type `sponius <song info>...` to search for a song's lyrics
+  * Type `sponius <song title> by <song aritst>` to search for a song's lyrics
+  * Or Type `sponius -s <song title> -a <song artist>`
 
 ## Installation
 1- clone the repository
