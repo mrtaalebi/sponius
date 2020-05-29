@@ -12,7 +12,7 @@ sudo cp sponius.py /etc/sponius/
 
 sudo tee /usr/local/bin/sponius << EOF
 #!/bin/bash
-python3 /etc/sponius/sponius.py
+python3 /etc/sponius/sponius.py "\$@"
 EOF
 sudo chmod +x /usr/local/bin/sponius
 

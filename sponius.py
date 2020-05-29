@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
+
 import requests
 import json
 import logging
 import dbus
+import sys, getopt
 
 from difflib import SequenceMatcher
 
@@ -119,9 +121,53 @@ def get_spotify_song_info():
     return title, artist
 
 
-title, artist = get_spotify_song_info()
+def parse_arguments(args):
+    try:
+        opts, args = getopt.getopt(args, 'ha:s:', [])
+    except getopt.GetoptError:
+        print('Use sponius -h to find what you want')
+        sys.exit(2)
+
+    if not opts and not args:
+        return get_spotify_song_info()
+
+    title = artist = None
+    for opt, arg in opts:
+        if opt in ('-h', '--help'):
+            print('SpoNius = Spotify + geNius')
+            print('Sponius is a CLI lyrics service which works with Spotify desktop app and genius.com')
+            print('Type `sponius` in terminal and instantly get the lyrics of what you\'re listening on spotify. BOOM!')
+            print('Type `sponius -s <song title> -a <song artist>` to search for song\'s lyrics')
+            print('Or just Type `sponius <song tilte> by <song artist>`')
+            print('If songe title or artist is more than one word, use " to surrounding them')
+            sys.exit()
+        elif opt in ('-s', '--song'):
+            title = arg
+        elif opt in ('-a', '--artist'):
+            artist = arg
+
+    if title is None or artist is None:
+        if 'by' in args:
+            by_index = args.index('by')
+            if title is None:
+                try:
+                    title = args[by_index - 1]
+                except IndexError:
+                    print('You should give the songe name. Use `sponius -h` to see more')
+                    sys.exit(2)
+            if artist is None:
+                try:
+                    artist = args[by_index + 1]
+                except IndexError:
+                    print('You should give the songe artist. Use `sponius -h` to see more')
+                    sys.exit(2)
+
+    return title, artist
+
+
+title, artist = parse_arguments(sys.argv[1:])
+
 print(f'\n{title} {artist}\n')
 
 l=lyrics(title, artist)
 print(l)
-
