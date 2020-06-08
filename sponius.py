@@ -139,7 +139,7 @@ def parse_arguments(args):
             print('Type `sponius` in terminal and instantly get the lyrics of what you\'re listening on spotify. BOOM!')
             print('Type `sponius -s <song title> -a <song artist>` to search for song\'s lyrics')
             print('Or just Type `sponius <song tilte> by <song artist>`')
-            print('If songe title or artist is more than one word, use " to surrounding them')
+            print('If songe title or artist is more than one word, use " to surrounding them. Or don\'t! Dosn\'t matter')
             sys.exit()
         elif opt in ('-s', '--song'):
             title = arg
