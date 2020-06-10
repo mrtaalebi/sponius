@@ -128,10 +128,11 @@ def parse_arguments(args):
         print('Use sponius -h to find what you want')
         sys.exit(2)
 
-    if not opts and not args:
-        return (get_spotify_song_info())
-
     title = artist = None
+    if not opts and not args:
+        title, artist = (get_spotify_song_info())
+        return title, artist
+
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             print('SpoNius = Spotify + geNius')
