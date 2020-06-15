@@ -30,6 +30,7 @@ def lyrics(title, artist=""):
             .replace('by', '') \
             .replace('acoustic', '') \
             .replace('-', '') \
+            .replace('&', 'and')
             .strip()
     try:
         r = get_request(('https://genius.com/api/search/multi?q='
