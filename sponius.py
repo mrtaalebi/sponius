@@ -30,6 +30,7 @@ def lyrics(title, artist=""):
             .replace('by', '') \
             .replace('acoustic', '') \
             .replace('-', '') \
+            .replace('&', 'and')
             .strip()
     try:
         r = get_request(('https://genius.com/api/search/multi?q='
@@ -128,10 +129,11 @@ def parse_arguments(args):
         print('Use sponius -h to find what you want')
         sys.exit(2)
 
-    if not opts and not args:
-        return get_spotify_song_info()
-
     title = artist = None
+    if not opts and not args:
+        title, artist = (get_spotify_song_info())
+        return title, artist
+
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             print('SpoNius = Spotify + geNius')
@@ -139,7 +141,7 @@ def parse_arguments(args):
             print('Type `sponius` in terminal and instantly get the lyrics of what you\'re listening on spotify. BOOM!')
             print('Type `sponius -s <song title> -a <song artist>` to search for song\'s lyrics')
             print('Or just Type `sponius <song tilte> by <song artist>`')
-            print('If songe title or artist is more than one word, use " to surrounding them')
+            print('If songe title or artist is more than one word, use " to surrounding them. Or don\'t! Dosn\'t matter')
             sys.exit()
         elif opt in ('-s', '--song'):
             title = arg
@@ -150,14 +152,19 @@ def parse_arguments(args):
         if 'by' in args:
             by_index = args.index('by')
             if title is None:
+                title = ''
                 try:
-                    title = args[by_index - 1]
+                    for i in range(by_index):
+                        title = title + args[i] + ' '
+                    title = title.strip()
                 except IndexError:
                     print('You should give the songe name. Use `sponius -h` to see more')
                     sys.exit(2)
             if artist is None:
+                artist = ''
                 try:
-                    artist = args[by_index + 1]
+                    for i in range(by_index + 1, len(args)):
+                        artist = artist + args[i] + ' '
                 except IndexError:
                     print('You should give the songe artist. Use `sponius -h` to see more')
                     sys.exit(2)
